@@ -6,8 +6,13 @@ const userSchema=new Schema({
     email:{
         type:String,
         required:true,
-        unique:true
-    },
+        unique:true,
+},
+verified:{
+    type:Boolean,
+    required:true,
+    default:false
+},
     password:{
         type:String,
         required:true
@@ -68,7 +73,7 @@ userSchema.statics.login=async function(email,password)
     {
         throw Error("Incorrect Password")
     }
-return user
+return exist
 }
 
 module.exports=model("user",userSchema)

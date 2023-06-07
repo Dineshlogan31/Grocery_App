@@ -5,6 +5,7 @@ import {MDBInput,MDBRow,MDBCol,MDBCheckbox,MDBBtn} from 'mdb-react-ui-kit'
 
 import STYLE from '../css/login.module.css'
 import {useNavigate} from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 
 
@@ -40,6 +41,7 @@ const handleSubmit= (e)=>{
     }
   return (
     <div className={STYLE.LoginForm}>
+      <ToastContainer/>
     <h2>SignUp</h2>
     <form onSubmit={handleSubmit}>
   <MDBInput className='mb-4' type='text' id='form1Example1' label='Email address' onChange={(e)=>{setEmail(e.target.value)}} />

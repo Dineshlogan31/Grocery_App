@@ -5,11 +5,14 @@ import {MDBInput,MDBRow,MDBCol,MDBCheckbox,MDBBtn} from 'mdb-react-ui-kit'
 import {useNavigate} from 'react-router-dom'
 
 import STYLE from '../css/login.module.css'
+import { ToastContainer, toast } from 'react-toastify'
 
 const Login = () => {
   const [email,setEmail]=useState()
   const [password,setPassword]=useState()
   const [error,setError]=useState(null)
+ 
+  
 
     const navigate=useNavigate()
 
@@ -20,8 +23,16 @@ const Login = () => {
       email:email,
       password:password
     }).then((response)=>{
-      console.log(response);
-      navigate("/")})
+      if(response.data.VerifyMessage)
+      {
+        toast.warning(response.data.VerifyMessage)
+      }
+      else{
+        toast.success(response.data.Message)
+        navigate('/')
+      }
+      
+      })
       .catch((err)=>{
          if(err)
          {
@@ -37,6 +48,7 @@ const Login = () => {
     
   return (
     <div className={STYLE.LoginForm}>
+     <ToastContainer/>
         <h2>Login Form</h2>
         <form onSubmit={handleSubmit}>
       <MDBInput className='mb-4' type='email' id='form1Example1' label='Email address' onChange={(e)=>{setEmail(e.target.value)}} />
@@ -60,7 +72,9 @@ const Login = () => {
         </MDBCol>
       </MDBRow>
       {error && <div className={STYLE.error} style={{color:"red"}}>{error}</div>}
+      
     </form>
+    
     </div>
   )
 }
