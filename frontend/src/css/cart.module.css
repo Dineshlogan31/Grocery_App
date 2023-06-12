@@ -1,0 +1,38 @@
+.mainDiv {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+.mainDiv ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mainDiv ul .cardDiv {
+  height: 270px;
+  width: 14rem;
+  margin-top: 15px;
+  margin-left: 10px;
+  background-color: gold;
+  border-radius: 4px;
+}
+
+.mainDiv ul .cardDiv img {
+  height: 10rem;
+  width: 14rem;
+}
+
+.mainDiv ul .cardDiv .buy {
+  position: absolute;
+  height: 2rem;
+  width: 5rem;
+  margin-left: -9rem;
+  margin-top: 2rem;
+}
+.mainDiv ul .cardDiv .cart {
+  position: absolute;
+  height: 2rem;
+  width: 5rem;
+  margin-left: -2rem;
+  margin-top: 2rem;
+}
