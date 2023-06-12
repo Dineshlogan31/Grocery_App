@@ -2,10 +2,11 @@ import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import STYLE from '../css/navbar.module.css'
 import LOGO from '../images/logo.jpg'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const NavBar = () => {
+  const navigate=useNavigate()
   const cart=useSelector((state)=>state.cart)
   
  
@@ -26,7 +27,7 @@ const NavBar = () => {
           <li><Link to="/">Contact</Link></li>
           <li><Link to="/">services</Link></li>
           <li><Link to='/signup'>SignUp</Link></li>
-          <h6>Cart Items:{cart.length}</h6>
+          <h6 onClick={()=>navigate("/cart")} style={{cursor:"pointer"}}>Cart Items:{cart.length}</h6>
         </ul>
       </div>
       </div>

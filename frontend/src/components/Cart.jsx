@@ -1,14 +1,23 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import STYLE from "../css/cart.module.css"
+import {removecart} from "../store/cartSlicer"
 
 const Cart = () => {
+    const dispatch=useDispatch()
     const carts=useSelector((state)=>state.cart)
-    console.log(carts);
     let price=carts.reduce((acc,cv)=>{
         return acc+cv.product.price
     },0)
     let a=Math.ceil(price)
+    let remove=(e,cart)=>{
+        e.preventDefault()
+        dispatch(
+            removecart(
+                cart
+            )
+        )
+    }
   return (
     <>
     <h1>Your Cart Items:{carts.length}</h1>
@@ -22,7 +31,7 @@ const Cart = () => {
                        <span>Price:{cart.product.price} Rating:{cart.product.rating.rate}</span>
                        
                        <button className={STYLE.buy}>Buy</button>
-                       <button className={STYLE.cart} >Remove from cart</button>
+                       <button className={STYLE.cart} onClick={(e)=>{remove(e,cart)}}>Remove from cart</button>
                        </div>
             }):null}
             </ul>

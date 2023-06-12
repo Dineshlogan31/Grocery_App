@@ -13,10 +13,15 @@ export const cartSlice=createSlice({
             // }
             
             state.push(action.payload)
+        },
+        removecart(state,action){
+            
+           const index= state.findIndex((cart)=>cart.product.id === action.payload.product.id)
+           state.shift(state[index])
         }
     }
 })
 
-export const {addToCart}=cartSlice.actions
+export const {addToCart,removecart}=cartSlice.actions
 
 export default cartSlice.reducer

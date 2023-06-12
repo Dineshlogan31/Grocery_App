@@ -4,10 +4,10 @@ import {getAllProducts} from "../store/productSlicer"
 import STYLE from "../css/products.module.css"
 import {addToCart} from "../store/cartSlicer"
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
+
 
 const Products = () => {
-    const navigate=useNavigate()
+    
     const products=useSelector((state)=>state.product)
     const cart=useSelector((state)=>state.cart)
     
@@ -27,7 +27,7 @@ const Products = () => {
         })
         
       )
-      navigate("/cart")
+     
     }
 
     useEffect(()=>{
