@@ -1,42 +1,69 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import STYLE from "../css/cart.module.css"
-import {removecart} from "../store/cartSlicer"
+import STYLE from "../css/card.module.css"
+import {getAllCartItems,removeFromCart} from "../store/cartSlicer"
+import Portal from './Portal';
+
 
 const Cart = () => {
+
+  const [show,setShow]=useState(false)
+  const [cart,setCart]=useState([])
+
     const dispatch=useDispatch()
+    
     const carts=useSelector((state)=>state.cart)
-    let price=carts.reduce((acc,cv)=>{
-        return acc+cv.product.price
-    },0)
-    let a=Math.ceil(price)
-    let remove=(e,cart)=>{
+   const price=carts && carts.reduce((acc,value)=>{
+    return acc+value.price
+   },0)
+
+   const originalPrice=Math.ceil(price)
+   
+   
+    const removecart=(e,cart)=>{
         e.preventDefault()
-        dispatch(
-            removecart(
-                cart
-            )
-        )
-    }
+        dispatch(removeFromCart(cart))
+      }
+
+      const handleBuy=(cart)=>{
+        setShow(true)
+        setCart(cart)
+      }
+
+    useEffect(()=>{
+      dispatch(getAllCartItems())
+    },[dispatch,carts])
+
+    if(carts.length===0)
+     return (<h1>No items in Cart</h1>)
+
   return (
     <>
-    <h1>Your Cart Items:{carts.length}</h1>
-    <h2>your Cart Price:{a}</h2>
-    <div className={STYLE.mainDiv}>
-         <ul>
+    <h1>Your Cart Items:{carts && carts.length}</h1>
+    <h3>Your Cart Price:{originalPrice}</h3>
+    <div className={STYLE.container}>
             {Array.isArray(carts) ? carts.map((cart)=>{
-                return <div className={STYLE.cardDiv} id={cart.product.id} key={cart.product.id}>
-                    <img src={cart.product.image} alt="Product" srcSet="" />
-                       <h6>{cart.product.title}</h6>
-                       <span>Price:{cart.product.price} Rating:{cart.product.rating.rate}</span>
-                       
-                       <button className={STYLE.buy}>Buy</button>
-                       <button className={STYLE.cart} onClick={(e)=>{remove(e,cart)}}>Remove from cart</button>
-                       </div>
+                return  <div className={STYLE.card} key={cart._id}>
+                <div className={STYLE.image}>
+                    <img src={cart.image} alt="product"  />
+                </div>
+                <div className={STYLE.content}>
+                    <span>Product:{cart.title}</span> <br />
+                    <span>Price:${cart.price}</span><br />
+                    <span>Rating:{cart.rating.rate}</span>
+                </div>
+                <div className={STYLE.button}>
+                  <button className={STYLE.buy} onClick={()=>{handleBuy(cart)}}>Buy</button>
+                  <button className={STYLE.cart} onClick={(e)=>removecart(e,cart)}>Remove cart</button>
+                </div>
+        
+            </div>
+      
             }):null}
-            </ul>
-    </div>
+        </div>
+        <Portal show={show} closePortal={()=>setShow(false)} cart={cart}/>
     </>
+    
   )
 }
 

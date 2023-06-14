@@ -1,8 +1,11 @@
 const Product=require("../model/productModel")
 
-const getAllProducts=(req,res)=>{
+const getAllProducts=async (req,res)=>{
 
-res.json({msg:"Get"})
+    const products=await Product.find()
+
+    res.status(200).json(products)
+
 }
 const addProduct=async(req,res)=>{
     const {title,price,description,category,image,rating}=req.body

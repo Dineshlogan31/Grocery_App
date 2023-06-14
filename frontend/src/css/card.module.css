@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+  background-color: rgba(111, 25, 123, 0.2);
+  z-index: 11;
+}
+
+.card {
+  margin-left: 20px;
+  margin-top: 20px;
+  height: 18rem;
+  width: 14rem;
+  border: 1px solid gray;
+  box-shadow: 3px 3px 3px 1px black;
+  border-radius: 10px;
+}
+.image {
+  height: 50%;
+  width: 100%;
+}
+.image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+.content {
+  height: 35%;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px black;
+}
+.content span {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+
+.button {
+  margin-left: 10%;
+}
+.button .buy {
+  height: 15%;
+  width: 6rem;
+  border: none;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+  margin-top: 4%;
+  margin-left: -6px;
+}
+.button .cart {
+  height: 15%;
+  width: 6rem;
+  border: none;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+  margin-left: 4px;
+}
