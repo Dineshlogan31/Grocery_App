@@ -1,0 +1,86 @@
+.container {
+  font-family: josefin-sans;
+  background-color: rgba(128, 128, 128, 0.8);
+  display: flex;
+  height: 4.5rem;
+  width: 100%;
+  align-items: center;
+  color: black;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+.container .logo {
+  width: 15%;
+  height: 100%;
+}
+.container .logo img {
+  width: 50%;
+  height: 100%;
+  border-radius: 10%;
+}
+.container .searchBox {
+  width: 30%;
+}
+
+.container .searchBox input {
+  height: 2.5rem;
+  width: 100%;
+  border: none;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.container .content {
+  width: 60%;
+}
+
+.container .content ul li {
+  text-decoration: none !important;
+  list-style-type: none;
+  height: 20%;
+}
+
+.container .content ul li a {
+  text-decoration: none !important;
+  color: inherit;
+  cursor: pointer;
+}
+
+.container .content ul {
+  display: flex;
+  justify-content: flex-end;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.content ul li .subProductmenu {
+  height: 50%;
+  width: 10%;
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.6);
+  border-radius: 1rem;
+  top: 40px;
+  color: white;
+  visibility: hidden;
+  margin-left: -2%;
+  z-index: 111;
+}
+.content ul li .subProductmenu ul {
+  display: inline;
+  text-align: center;
+}
+.container .content ul li:hover .subProductmenu {
+  visibility: visible;
+}
+
+.content ul li .submenu-2 {
+  height: 16rem;
+  width: 8rem;
+}
+
+.content ul li .submenu-2 ul li {
+  display: grid;
+}
+.content ul li i .fa-solid {
+  cursor: pointer;
+}

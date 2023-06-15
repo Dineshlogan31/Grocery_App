@@ -1,27 +1,35 @@
 import React from 'react'
-import STYLE from "../css/card.module.css"
-import camera from "../images/camera.jpg"
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import logo from "../images/red.avif"
+import style from "../css/navbar.module.css"
 
-const Card = () => {
+const Demo = () => {
   return (
-    <div className={STYLE.container}>
-        <div className={STYLE.card}>
-            <div className={STYLE.image}>
-                <img src={camera} alt="product"  />
-            </div>
-            <div className={STYLE.content}>
-                <span></span> <br />
-                <span className={STYLE.price}>Price</span><br />
-                <span>Rating</span>
-            </div>
-            <div className={STYLE.button}>
-              <button className={STYLE.buy}>Buy</button>
-              <button className={STYLE.cart}>Add to cart</button>
-            </div>
+    <div>
 
-        </div>
+ 
+    <Card style={{ width: '15rem' }}>
+      <Card.Img variant="top" src={logo} />
+      <Card.Body className={style.mainBody}>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+        Price
+        </Card.Text>
+
+        <Card.Footer>
+        <Button onClick={()=>{console.log("hiii");}} variant="primary">Buy</Button>
+        <Button variant="success">Add to cart</Button>
+        </Card.Footer>
+        
+      </Card.Body>
+    </Card>
+
+
+
+
     </div>
   )
 }
 
-export default Card
+export default Demo

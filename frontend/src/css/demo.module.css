@@ -1,0 +1,89 @@
+.container {
+  margin-left: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+  height: min-content;
+  width: 230px;
+  background-color: #ffffff;
+  border: 2px solid #e1e6e3;
+  border-radius: 10px;
+  font-family: josefin-sans;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+.card .card_header {
+  height: 40px;
+}
+
+.card .card_header h3 {
+  color: rgb(4, 5, 15);
+  font-size: 20px;
+}
+
+.card .card_header span {
+  position: absolute;
+  color: red;
+  background: #e1e6e3;
+  margin-left: 76%;
+  margin-top: -30%;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.card .card_img {
+  position: relative;
+  height: 180px;
+  border-radius: 20px;
+  margin: 15px 0;
+}
+.card .card_img img {
+  height: 100%;
+  width: 90%;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.card .card_img i {
+  position: absolute;
+  color: red;
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+  top: -10px;
+  left: 85%;
+}
+.card .card_details {
+  position: relative;
+  margin: -10px 1px;
+}
+.card .card_details span {
+  color: #757d8a;
+  font-size: 20px;
+  height: 2px;
+}
+
+.card .card_details strong {
+  color: #545d6d;
+  font-size: 22px;
+}
+.card .card_footer {
+  width: 100%;
+  margin: 10px 1px;
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.card .card_footer button {
+  height: 3%;
+  width: 45%;
+  background-color: rgb(66, 117, 245);
+  border: none;
+  border-radius: 10px;
+}

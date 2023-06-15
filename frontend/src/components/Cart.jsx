@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import STYLE from "../css/card.module.css"
+import style from "../css/demo.module.css"
 import {getAllCartItems,removeFromCart} from "../store/cartSlicer"
 import Portal from './Portal';
 
@@ -32,32 +32,40 @@ const Cart = () => {
 
     useEffect(()=>{
       dispatch(getAllCartItems())
-    },[dispatch,carts])
+    },[dispatch])
 
-    if(carts.length===0)
-     return (<h1>No items in Cart</h1>)
+    // if(carts.length===0)
+    //  return (<h1>No items in Cart</h1>)
 
   return (
     <>
     <h1>Your Cart Items:{carts && carts.length}</h1>
     <h3>Your Cart Price:{originalPrice}</h3>
-    <div className={STYLE.container}>
+    <div className={style.container}>
             {Array.isArray(carts) ? carts.map((cart)=>{
-                return  <div className={STYLE.card} key={cart._id}>
-                <div className={STYLE.image}>
-                    <img src={cart.image} alt="product"  />
+                return  <div className={style.card} key={cart._id}>
+                <div className={style.card_header}>
+                <h3>{cart.title}</h3>
+                 <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                 <i class="fa-solid fa-star"></i>
+                 <i class="fa-regular fa-star-half-stroke"></i></p>
+                 <span>new</span>
                 </div>
-                <div className={STYLE.content}>
-                    <span>Product:{cart.title}</span> <br />
-                    <span>Price:${cart.price}</span><br />
-                    <span>Rating:{cart.rating.rate}</span>
+                <div className={style.card_img}>
+              <img src={cart.image} alt="" />
+              <i class="fa-solid fa-heart"></i>
                 </div>
-                <div className={STYLE.button}>
-                  <button className={STYLE.buy} onClick={()=>{handleBuy(cart)}}>Buy</button>
-                  <button className={STYLE.cart} onClick={(e)=>removecart(e,cart)}>Remove cart</button>
+                <div className={style.card_details}>
+                  <div className={style.price}>
+                      <span>Price:</span>
+                      <strong>${cart.price}</strong>
+                  </div>
                 </div>
-        
-            </div>
+                <div className={style.card_footer}>
+                    <button onClick={handleBuy}>Buy</button>
+                    <button onClick={(e)=>{removecart(e,cart)}}>remove</button>
+                </div>
+              </div>
       
             }):null}
         </div>
